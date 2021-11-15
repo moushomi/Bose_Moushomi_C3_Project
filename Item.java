@@ -7,9 +7,18 @@ public class Item {
         this.price = price;
     }
 
+    public Item() {
+
+    }
+
     public String getName() {
         return name;
     }
+
+    public int getPrice() {
+        return price;
+    }
+
     @Override
     public String toString(){
         return  name + ":"

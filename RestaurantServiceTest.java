@@ -1,6 +1,10 @@
+import org.hamcrest.MatcherAssert;
+import org.hamcrest.Matchers;
+import org.junit.Before;
 import org.junit.jupiter.api.*;
 
 import java.time.LocalTime;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -28,7 +32,16 @@ class RestaurantServiceTest {
         Assertions.assertNull(restaurant);
     }
     //<<<<<<<<<<<<<<<<<<<<SEARCHING>>>>>>>>>>>>>>>>>>>>>>>>>>
+    /**Task 3 of Order Value TDD approach*/
+    @Test
+    public void searching_for_the_given_name_of_the_item_should_return_the_order_value(){
+        Restaurant restaurant1 = new Restaurant();
+        restaurant1.addToMenu("Chowmein",200);
 
+        int orderValue = restaurant1.findItemByOrderValue("Chowmein");
+        Assertions.assertEquals(200,orderValue);
+
+    }
 
 
 
@@ -70,4 +83,6 @@ class RestaurantServiceTest {
         assertEquals(initialNumberOfRestaurants + 1,service.getRestaurants().size());
     }
     //<<<<<<<<<<<<<<<<<<<<ADMIN: ADDING & REMOVING RESTAURANTS>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+
 }

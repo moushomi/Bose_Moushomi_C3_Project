@@ -1,8 +1,6 @@
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 
 public class Restaurant {
@@ -35,13 +33,19 @@ public class Restaurant {
 
     public LocalTime getCurrentTime(){ return  LocalTime.now(); }
 
+    private List<Item> menuItems = new ArrayList<>();
+
+    public Restaurant(){
+        menuItems.add(new Item("Sweet Corn Soup",119));
+    }
+
     public List<Item> getMenu() {
         //return null;
         //DELETE ABOVE RETURN STATEMENT AND WRITE CODE HERE
         return Collections.unmodifiableList(menu);
     }
 
-    private Item findItemByName(String itemName){
+    Item findItemByName(String itemName){
         for(Item item: menu) {
             if(item.getName().equals(itemName))
                 return item;
@@ -62,6 +66,9 @@ public class Restaurant {
 
         menu.remove(itemToBeRemoved);
     }
+
+
+
     public void displayDetails(){
         System.out.println("Restaurant:"+ name + "\n"
                 +"Location:"+ location + "\n"
@@ -74,6 +81,18 @@ public class Restaurant {
     public String getName() {
         return name;
     }
+   /*orderValue added code*/
+   public int findItemByOrderValue(String itemName){
+       int totalOrderValue = 0;
+       for(Item item:menu){
+           if(item.getName().equals(itemName))
+               totalOrderValue = totalOrderValue+item.getPrice();
+       }
+       return totalOrderValue;
+   }
 
 
+    /* Added class ends*/
 }
+
+
